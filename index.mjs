@@ -55,7 +55,7 @@ export const acpManager = {
     addAcpListener(url, action) {
         if (acpManager.app) {
             acpManager.app.get(url, (req, res) => {
-                if (!req.query.token) res.sendStatus(401);
+                if (!req || !req.query || !req.query.token) res.sendStatus(401);
                 if (!acpManager.isValidToken(req.query.token.toString())) {
                     res.sendStatus(401);
                 }
