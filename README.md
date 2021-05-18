@@ -10,9 +10,13 @@ This project serves as an example for integrating an api into an ALT:V GTA V ser
 ## Installation & First Start
 
 1. Copy the contents of this repo to `altv-server\resources\altv-adminpanel-api`
-2. Run `npm install`
+2. Run `npm install` in the directory
 3. Start server
 4. Open a browser and go to `http://localhost:9999/acp/dashboard?token=REPLACETHIS`
+
+You should see this:
+
+![example](https://user-images.githubusercontent.com/13089522/118709976-f9d54c80-b81d-11eb-821f-29b014a4c2e7.PNG)
 
 ## Modify
 
