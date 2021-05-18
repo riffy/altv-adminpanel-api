@@ -22,3 +22,7 @@ You should see this:
 
 1. Change the secret to one that suits you, be vary of http arguments (avoid &, ?, % etc.) in `index.mjs`
 2. New listeners can be added with `addAcpListener`. Consult the comments.
+
+
+# Control Panel
+For the control panel, please look at my other repository https://github.com/riffy/altv-adminpanel-django-adminlte 
