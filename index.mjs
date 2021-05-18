@@ -3,10 +3,10 @@ import ip from "ip"
 import * as alt from "alt-server"
 
 export const acpManager = {
-    startdate: 0,
-    port: 9999,
-    app: undefined,
-    secret: "REPLACETHIS",
+    startdate: 0, // Used for counting uptime
+    port: 9999, // Port to use for the API
+    app: undefined, // Express
+    secret: "REPLACETHIS", // Secret token that allows for calls
 
     init() {
         acpManager.app = express();
@@ -55,7 +55,7 @@ export const acpManager = {
     addAcpListener(url, action) {
         if (acpManager.app) {
             acpManager.app.get(url, (req, res) => {
-                if (!req || !req.query || !req.query.token) res.sendStatus(401);
+                if (!req || !req.query || !req.query.token) res.sendStatus(400);
                 if (!acpManager.isValidToken(req.query.token.toString())) {
                     res.sendStatus(401);
                 }
