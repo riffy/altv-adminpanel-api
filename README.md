@@ -33,11 +33,11 @@ For the control panel, please look at my other repository https://github.com/rif
 
 ## Server
 
--[ ] Config
--[ ] Map
+- [ ] Config
+- [ ] Map
 
 ## Player
 
--[ ] Player list with data
--[ ] Manage single player (kick with message, freeze, jail, teleport)
+- [ ] Player list with data
+- [ ] Manage single player (kick with message, freeze, jail, teleport)
 
