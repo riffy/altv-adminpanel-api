@@ -1,9 +1,9 @@
 import express from "express"
 import ip from "ip"
 import * as alt from "alt-server"
+import { acpDashboard } from "./dashboard.mjs";
 
-export const acpManager = {
-    startdate: 0, // Used for counting uptime
+const acpManager = {
     port: 9999, // Port to use for the API
     app: undefined, // Express
     secret: "REPLACETHIS", // Secret token that allows for calls
@@ -30,20 +30,7 @@ export const acpManager = {
      * @description Adds listeners
      */
     registerListeners() {
-        acpManager.addDashboardListener();
-    },
-
-    /**
-     * @description Adds the listener for the dashboard view with uptime and online players.
-     */
-    addDashboardListener() {
-        acpManager.addAcpListener("/acp/dashboard", (req, res) => {
-            const dashboardinfo = {
-                uptime: ((new Date().getTime() - acpManager.startdate.getTime()) / 1000),
-                onlinePlayers: alt.Player.all.length
-            };
-            res.status(200).send(JSON.stringify(dashboardinfo));
-        });
+        acpDashboard.init();
     },
 
     /**
@@ -55,11 +42,11 @@ export const acpManager = {
     addAcpListener(url, action) {
         if (acpManager.app) {
             acpManager.app.get(url, (req, res) => {
-                if (!req || !req.query || !req.query.token) {
+                if (!req || !req.query || !req.query.t) {
                     res.sendStatus(400);
                 }
                 else {
-                    if (!acpManager.isValidToken(req.query.token.toString())) {
+                    if (!acpManager.isValidToken(req.query.t.toString())) {
                         res.sendStatus(401);
                     }
                     else {
@@ -80,3 +67,5 @@ export const acpManager = {
 }
 
 acpManager.init();
+
+export { acpManager };
