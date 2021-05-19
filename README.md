@@ -29,3 +29,15 @@ For the control panel, please look at my other repository https://github.com/rif
 
 ![woop_woop](https://user-images.githubusercontent.com/13089522/118840206-77a16280-b8c7-11eb-82ce-074122c8dfeb.PNG)
 
+# Upcoming Features
+
+## Server
+
+-[ ] Config
+-[ ] Map
+
+## Player
+
+-[ ] Player list with data
+-[ ] Manage single player (kick with message, freeze, jail, teleport)
+
