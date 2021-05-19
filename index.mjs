@@ -2,6 +2,7 @@ import express from "express"
 import ip from "ip"
 import * as alt from "alt-server"
 import { acpDashboard } from "./dashboard.mjs";
+import { acpServerStats } from "./serverstats.mjs";
 
 const acpManager = {
     port: 9999, // Port to use for the API
@@ -29,6 +30,7 @@ const acpManager = {
      * @description Adds listeners
      */
     registerListeners() {
+        acpServerStats.init();
         acpDashboard.init();
     },
 
@@ -62,7 +64,7 @@ const acpManager = {
      */
     isValidToken(t) {
         return (acpManager.secret === t);
-    }
+    },
 }
 
 acpManager.init();
