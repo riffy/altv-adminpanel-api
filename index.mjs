@@ -14,7 +14,6 @@ const acpManager = {
         acpManager.app.use(express.urlencoded({ extended: true }));
         acpManager.app.listen(acpManager.port, () => {
             alt.log("ACP Started at : " + acpManager.getAcpAddress());
-            acpManager.startdate = new Date();
             acpManager.registerListeners();
         });
     },
