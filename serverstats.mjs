@@ -3,7 +3,7 @@ import * as alt from "alt-server";
 
 const acpServerStats = {
     startdate: 0, // Used for counting uptime
-    visits: [], // { socialId, ip, altv-name }
+    visits: [], // { socialId, ip, altv-name, connected, disconnected }
 
     /**
      * @description Initializes the dashboard module for the admin control panel
@@ -23,7 +23,16 @@ const acpServerStats = {
                 socialId: player.socialId,
                 ip: player.ip,
                 name: player.name,
-                date: new Date()
+                connected: new Date(),
+                disconnected: ""
+            });
+        });
+
+        alt.on('playerDisconnect', (player) => {
+            acpServerStats.visits.forEach((visit) => {
+                if (visit && visit.socialId === player.socialId && visit.disconnected === "") {
+                    visit.disconnected = new Date();
+                }
             });
         });
     },

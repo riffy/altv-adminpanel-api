@@ -3,8 +3,6 @@ import * as alt from "alt-server";
 import { acpServerStats } from "./serverstats.mjs";
 
 const acpDashboard = {
-    visits: 0, // socialid
-
     /**
      * @description Initializes the dashboard module for the admin control panel
      */
