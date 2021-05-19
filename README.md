@@ -25,4 +25,7 @@ You should see this:
 
 
 # Control Panel
-For the control panel, please look at my other repository https://github.com/riffy/altv-adminpanel-django-adminlte 
+For the control panel, please look at my other repository https://github.com/riffy/gta-adminlte-django so you can do something neat like this
+
+![woop_woop](https://user-images.githubusercontent.com/13089522/118840206-77a16280-b8c7-11eb-82ce-074122c8dfeb.PNG)
+
