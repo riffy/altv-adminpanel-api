@@ -20,6 +20,7 @@ const acpServerStats = {
     registerEvents() {
         alt.on('playerConnect', (player) => {
             acpServerStats.visits.push({
+                id: player.id,
                 socialId: player.socialId,
                 ip: player.ip,
                 name: player.name,
@@ -54,9 +55,24 @@ const acpServerStats = {
     /**
      * @description Calulates the uptime of server and returns time in seconds.
      */
-     calculateUptime() {
+    calculateUptime() {
         return ((new Date().getTime() - acpServerStats.startdate.getTime()) / 1000);
-    }
+    },
+
+    /**
+     * @param  {} id
+     * @description Checks when the given playerid connected. If not found, date =
+     */
+    getConnectionDateForPlayerId(id) {
+        const date = undefined;
+        for (let visit in acpServerStats.visits) {
+            if (visit.id === id) {
+                date = visit.connected;
+                break;
+            }
+        }
+        return date;
+    },
 };
 
 export { acpServerStats };

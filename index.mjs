@@ -3,6 +3,7 @@ import ip from "ip"
 import * as alt from "alt-server"
 import { acpDashboard } from "./dashboard.mjs";
 import { acpServerStats } from "./serverstats.mjs";
+import { acpPlayer } from "./player.mjs";
 
 const acpManager = {
     port: 9999, // Port to use for the API
@@ -32,6 +33,7 @@ const acpManager = {
     registerListeners() {
         acpServerStats.init();
         acpDashboard.init();
+        acpPlayer.init();
     },
 
     /**
@@ -43,6 +45,29 @@ const acpManager = {
     addAcpListener(url, action) {
         if (acpManager.app) {
             acpManager.app.get(url, (req, res) => {
+                if (!req || !req.query || !req.query.t) {
+                    res.sendStatus(400);
+                }
+                else {
+                    if (!acpManager.isValidToken(req.query.t.toString())) {
+                        res.sendStatus(401);
+                    }
+                    else {
+                        action(req, res);
+                    }
+                }
+            });
+        }
+    },
+
+    /**
+     * @param  {} url
+     * @param  {} action
+     * @description Adds a Handler for the ACP. Triggered when a HTTP POST is received
+     */
+    addAcpHandler(url, action) {
+        if (acpManager.app) {
+            acpManager.app.post(url, (req, res) => {
                 if (!req || !req.query || !req.query.t) {
                     res.sendStatus(400);
                 }
