@@ -1,6 +1,8 @@
 # altv-adminpanel-api
 This project serves as an example for integrating an api into an ALT:V GTA V server. It provides basic usage with another project that is currently being worked upon.
 
+If it helped you setting up something nice, leave a :star:
+
 # Usage
 
 ## Requirements
@@ -25,4 +27,19 @@ You should see this:
 
 
 # Control Panel
-For the control panel, please look at my other repository https://github.com/riffy/altv-adminpanel-django-adminlte 
+For the control panel, please look at my other repository https://github.com/riffy/gta-adminlte-django so you can do something neat like this
+
+![woop_woop](https://user-images.githubusercontent.com/13089522/118840206-77a16280-b8c7-11eb-82ce-074122c8dfeb.PNG)
+
+# Upcoming Features
+
+## Server
+
+- [ ] Config
+- [ ] Map
+
+## Player
+
+- [ ] Player list with data
+- [ ] Manage single player (kick with message, freeze, jail, teleport)
+
