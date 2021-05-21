@@ -33,10 +33,17 @@ const acpPlayer = {
                 res.sendStatus(400);
             }
             else {
-                let info = {};
+                let data = {
+                    collection : [],
+                    info: {}
+                };
                 alt.Player.all.forEach((p) => {
+                    data.collection.push({
+                        id: p.id,
+                        name: p.name
+                    });
                     if (p.id === Number(req.query.id)) {
-                        info = {
+                        data.info = {
                             id: p.id,
                             name: p.name,
                             socialId: p.socialId,
@@ -51,7 +58,7 @@ const acpPlayer = {
                         }
                     }
                 });
-                res.status(200).send(JSON.stringify(info));
+                res.status(200).send(JSON.stringify(data));
             }
         });
     },
