@@ -64,8 +64,8 @@ const acpServerStats = {
      * @description Checks when the given playerid connected. If not found, date =
      */
     getConnectionDateForPlayerId(id) {
-        const date = undefined;
-        for (let visit in acpServerStats.visits) {
+        let date = undefined;
+        for (let visit of acpServerStats.visits) {
             if (visit.id === id) {
                 date = visit.connected;
                 break;

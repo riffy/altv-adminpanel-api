@@ -33,23 +33,17 @@ const acpPlayer = {
                 res.sendStatus(400);
             }
             else {
-                let data = {
-                    collection : [],
-                    info: {}
-                };
+                let data = {};
                 alt.Player.all.forEach((p) => {
-                    data.collection.push({
-                        id: p.id,
-                        name: p.name
-                    });
                     if (p.id === Number(req.query.id)) {
-                        data.info = {
+                        const connectionTime = acpServerStats.getConnectionDateForPlayerId(p.id);
+                        data = {
                             id: p.id,
                             name: p.name,
                             socialId: p.socialId,
                             ip: p.ip,
                             ping: p.ping,
-                            connected: acpServerStats.getConnectionDateForPlayerId(p.id),
+                            connected: (connectionTime) ? (new Date().getTime() - connectionTime.getTime()) / 1000 : 0,
                             health: p.health,
                             armour: p.armour,
                             dimension: p.dimension,
